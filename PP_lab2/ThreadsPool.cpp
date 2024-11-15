@@ -26,17 +26,18 @@ void threadsPool::run()
     while (true) {
         unique_lock<mutex> lk(m);
         condition.wait(lk, [this]() {return !q.empty(); });
-        function <void()> f = q.front();
+        task t = q.front();
         q.pop();
         lk.unlock();
-        f();
+        t.func(t.param1,t.param2);
     }
 }
 
-void threadsPool::passQ(function<void()> f)
+void threadsPool::passQ(function<void(int, int)> f, int p1, int p2)
 {
     lock_guard<mutex> lg(m);
-    q.push(f);
+    task t = task(f, p1, p2);
+    q.push(t);
     condition.notify_one();
 }
 
