@@ -67,7 +67,7 @@ int main()
     printf("Number of Threads: %i\n", n);
     
     if (n != 0) {
-        for (int i = 0; i < n; i++) {
+        for (unsigned int i = 0; i < n; i++) {
             pool.passQ(my_cos, PI * i / 2);
         }
     }
