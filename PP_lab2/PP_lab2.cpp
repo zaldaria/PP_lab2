@@ -79,9 +79,15 @@ int main()
     unsigned int n = pool.GetCntThreads();
     printf("Number of Threads: %i\n", n);
     
-    for (int i = 0; i < n; i++) {
-        pool.passQ(my_cos, PI*i/2);
+    if (n != 0) {
+        for (int i = 0; i < n; i++) {
+            pool.passQ(my_cos, PI * i / 2);
+        }
     }
+    else {
+        printf("No free threads..");
+    }
+    
   
    
 }
