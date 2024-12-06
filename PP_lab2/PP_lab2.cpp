@@ -26,7 +26,7 @@ vector<double> generateRandomArray(int n) {
     uniform_real_distribution<> dis(1e-300, 1e-10); // Диапазон значений
 
     // Заполнение массива случайными числами
-    for (int i = 0; i < n; ++i) {
+    for (unsigned int i = 0; i < n; ++i) {
         array[i] = dis(gen);
     }
 
