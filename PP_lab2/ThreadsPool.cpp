@@ -18,7 +18,7 @@ threadsPool::~threadsPool() {
     }
 }
 
-int threadsPool::GetCntThreads()
+unsigned int threadsPool::GetCntThreads()
 {
     return cntThreads;
 }
@@ -42,9 +42,12 @@ void threadsPool::run()
 
 void threadsPool::passQ(function<void(double)> f, double p1)
 {
-    lock_guard<mutex> lg(m);
-    task t = task(f, p1);
-    q.push(t);
+    {
+        lock_guard<mutex> lg(m);
+        task t = task(f, p1);
+        q.push(t);
+    }
+    
     condition.notify_one();
 }
 

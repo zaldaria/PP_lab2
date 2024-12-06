@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include <iomanip>
 
 using namespace std;
 
@@ -58,7 +57,7 @@ void my_cos(double x) {
         avgSum += sum;
     }
     avgSum /= N;
-    printf("%.30f\n", avgSum);
+    printf("Cosinus of %.2f = %.30f\n", x, avgSum);
 }
 
 void printOk(int a, int b) {
@@ -77,10 +76,11 @@ void printOk(int a, int b) {
 int main()
 {
     threadsPool pool;
-    int n = pool.GetCntThreads();
+    unsigned int n = pool.GetCntThreads();
+    printf("Number of Threads: %i\n", n);
     
     for (int i = 0; i < n; i++) {
-        pool.passQ(my_cos, PI*i);
+        pool.passQ(my_cos, PI*i/2);
     }
   
    

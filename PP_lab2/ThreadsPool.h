@@ -29,7 +29,7 @@ public:
 
     threadsPool();
     ~threadsPool();
-    int GetCntThreads();
+    unsigned int GetCntThreads();
     void run();
     void passQ(function<void(double)> f, double p1);
 
