@@ -60,18 +60,6 @@ void my_cos(double x) {
     printf("Cosinus of %.2f = %.30f\n", x, avgSum);
 }
 
-void printOk(int a, int b) {
-    printf("Wait...");
-    for (int i = 0; i < 10; i++) {
-        //printf(".");
-        printf("\na = %i; b = %i;", a, b);
-        Sleep(2000);
-    }
-    //printf("\na = %i; b = %i;", a, b);
-
-    //printf("\nOkk");
-}
-
 
 int main()
 {
